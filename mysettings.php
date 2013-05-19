@@ -16,7 +16,7 @@
 <?php
     if(!empty($_POST['newpassword'])) {
         if ($_POST['newpassword']==$_POST['newpassword2']) {
-            include_once "common/class.Users.php";
+            include_once "common/classes/Users.php";
             $users = new Users($db);
             echo $users->changePassword($_SESSION['Username'], $_POST['currentpassword'], $_POST['newpassword']);
         } else {

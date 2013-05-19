@@ -21,12 +21,12 @@
     <tbody>
 
 <?php
-    include_once 'common/class.Special.php';
+    include_once 'common/classes/Special.php';
     $special = new Special($db);
     $rc = $special->getRecentChanges();
     // TODO : allow limiting/paging
 
-    include_once 'common/class.Pages.php';
+    include_once 'common/classes/Pages.php';
     $pages = new Pages($db);
 
     foreach ($rc as $row) {

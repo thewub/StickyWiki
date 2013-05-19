@@ -3,7 +3,7 @@
     $title = 'All users';
     include_once 'common/header.php';
 
-    include_once 'common/class.Users.php';
+    include_once 'common/classes/Users.php';
     $users = new Users($db);
     $allusers = $users->getAllUsers();
 ?>

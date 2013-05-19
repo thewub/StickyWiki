@@ -66,7 +66,7 @@
     if (empty($useredits)) {
         echo '<p>User has no edits yet.</p>';
     } else {
-        include_once 'common/class.Pages.php'; // need for tags
+        include_once 'common/classes/Pages.php'; // need for tags
         $pages = new Pages($db);
 ?>
 

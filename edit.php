@@ -19,7 +19,7 @@
 </div>
 
 <?php
-    include_once 'common/class.Pages.php';
+    include_once 'common/classes/Pages.php';
     $pages = new Pages($db);
     $revinfo = $pages->getPageInfo($page); // if editing we need the page_content, if saving we need page_id
     $newcontent = $revinfo['rev_content'];

@@ -12,7 +12,7 @@
 <?php
     if(!empty($_POST['username'])) {
         if ($_POST['password']==$_POST['password2']) {
-            include_once "common/class.Users.php";
+            include_once "common/classes/Users.php";
             $users = new Users($db);
             echo $users->createAccount($_POST['username'], $_POST['password']);
         } else {

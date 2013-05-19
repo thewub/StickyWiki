@@ -36,7 +36,7 @@
     }
 
     // check your privilege
-    include_once 'common/class.Users.php';
+    include_once 'common/classes/Users.php';
     $users = new Users($db);
     if (isset($_SESSION['LoggedIn'])) {
         $mygroups = $users->getUserGroups($_SESSION['UserID']);

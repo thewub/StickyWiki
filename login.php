@@ -14,7 +14,7 @@ if (!empty($_SESSION['LoggedIn']) && !empty($_SESSION['Username'])):
     echo '<p><a href="logout.php">Log out</a></p>';
 
 elseif (!empty($_POST['username'])):
-    include_once "common/class.Users.php";
+    include_once "common/classes/Users.php";
     $users = new Users($db);
     
     if($users->accountLogin($_POST['username'], $_POST['password'])===TRUE):

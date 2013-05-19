@@ -3,7 +3,7 @@
     $title = 'All pages';
     include_once 'common/header.php';
 
-    include_once 'common/class.Pages.php';
+    include_once 'common/classes/Pages.php';
     $pages = new Pages($db);
     $allpages = $pages->getPageList();
 ?>

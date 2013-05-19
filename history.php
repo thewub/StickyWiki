@@ -27,7 +27,7 @@
     <tbody>
 
 <?php
-    include_once 'common/class.Pages.php';
+    include_once 'common/classes/Pages.php';
     $pages = new Pages($db);
     $hist = $pages->getPageHistory($page);
     // TODO : allow limiting/paging

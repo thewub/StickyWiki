@@ -7,7 +7,7 @@
         terminalError('Need to specify a page!');
     }
 
-    include_once 'common/class.Pages.php';
+    include_once 'common/classes/Pages.php';
     $pages = new Pages($db);
 
     $revinfo = $pages->getPageInfo($page);
