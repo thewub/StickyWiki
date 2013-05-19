@@ -37,11 +37,9 @@ if(!empty($title)) {
                         </form>
 
                         <ul class="nav">
-                            <!-- TODO: class="active" needs to move based on current page -->
                             <li><a href="recentchanges.php">Recent changes</a></li>
                             <li><a href="allpages.php">All pages</a></li>
                             <li><a href="allusers.php">All users</a></li>
-                            <!--<li><a href="siteinfo.php">Site info</a></li>-->
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

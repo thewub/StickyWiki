@@ -28,7 +28,6 @@
     include_once 'common/classes/Special.php';
     $special = new Special($db);
     $rc = $special->getRecentChanges($limit);
-    // TODO : allow limiting/paging
 
     include_once 'common/classes/Pages.php';
     $pages = new Pages($db);
