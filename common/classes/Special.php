@@ -33,15 +33,18 @@ class Special {
     /**
      * Gets information about the current revision of a page
      *
+     * @param int $limit - number of results to retrieve
      * @return array - an array of recent changes
      */
-    public function getRecentChanges() {
+    public function getRecentChanges($limit) {
         $sql = "SELECT *
                 FROM rev
                 JOIN page ON (rev_page=page_id)
                 JOIN user ON (rev_user=user_id)
-                ORDER BY rev_timestamp DESC";
+                ORDER BY rev_timestamp DESC
+                LIMIT :l";
         $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(":l", $limit, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;

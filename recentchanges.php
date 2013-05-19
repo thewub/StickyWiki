@@ -2,11 +2,15 @@
     include_once 'common/base.php';
     $title = "Recent changes";
     include_once 'common/header.php';
+
+    $limit = 100;
 ?>
 
 <div class="page-header">
     <h1>Recent changes</h1>
 </div>
+
+<p>Showing up to <?php echo $limit; ?> changes.</p>
 
 <table class="table table-striped">
     <thead>
@@ -23,7 +27,7 @@
 <?php
     include_once 'common/classes/Special.php';
     $special = new Special($db);
-    $rc = $special->getRecentChanges();
+    $rc = $special->getRecentChanges($limit);
     // TODO : allow limiting/paging
 
     include_once 'common/classes/Pages.php';
