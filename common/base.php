@@ -12,7 +12,7 @@
     session_start();
  
     // Include site constants
-    include_once "common/constants.php";
+    include_once "config.php";
  
     // Create a database object
     try {

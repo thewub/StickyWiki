@@ -6,5 +6,5 @@
     define('DB_NAME', 'stickywiki0');
 
     // a standard date & time format
-    define('SW_DATETIME_FORMAT', 'H:i:s, j M Y');
+    define('SW_DATETIME_FORMAT', 'H:i:s, j M Y');    
 ?>
