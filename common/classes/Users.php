@@ -68,7 +68,6 @@ class Users {
               . '<p> Your account was successfully created with the username <strong>' . $u . '</strong>.</p>';
     }
 
-
     /**
      * Checks credentials and logs in the user
      *
@@ -211,7 +210,7 @@ class Users {
         return $output;
     }
 
-    public function getAllUsers() {
+    function getAllUsers() {
         $sql = "SELECT user_name, user_id, user_timestamp
                 FROM user
                 ORDER BY user_name";
@@ -235,6 +234,34 @@ class Users {
             terminalError('Current password incorrect!');
         }
     }
+
+    /**
+     * Is there an admin in the house? (i.e. on the wiki).
+     * Used during setup to prevent extra admins being created
+     *
+     * @return boolean
+     */
+    function adminExists() {
+        $sql = "SELECT * FROM `user_groups` WHERE ug_group='admin'";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return (!empty($result));
+    }
+
+    /**
+     * Create an admin account (for example when the wiki is first set up)
+     *
+     * @param string $u : username
+     * @param string $p : password
+     * @return void
+     */
+    function createAdminAccount($u, $p) {
+        $this->createAccount($u, $p);
+        $uid = $this->getUserInfo($u)['user_id'];
+        $this->addUserGroup($uid, 'admin');
+    }
+
 
 }
 ?>
