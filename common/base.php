@@ -1,18 +1,20 @@
 <?php
-
     /**
      * Starts a session, and creates a database connection using PDO (PHP Data Objects)
      */
 
+    // bump this every time there is a change to the database schema
+    $latestdbversion = 1;
+
     // Set the error reporting level
     error_reporting(E_ALL);
-    ini_set("display_errors", 1);
+    ini_set('display_errors', 1);
  
     // Start a PHP session
     session_start();
  
     // Include site constants
-    include_once "config.php";
+    include_once 'config.php';
  
     // Create a database object
     try {
@@ -21,8 +23,20 @@
     } catch (PDOException $e) {
         // database connection failed - go go gadget setup script
         header('Location: setup/setup.php');
-        exit;
+        die();
     }
+
+    $sql = "SELECT * FROM siteinfo";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $siteinfo = $stmt->fetch();
+
+    if ( (empty($siteinfo['db_version'])) or ($siteinfo['db_version']<$latestdbversion) ) {
+        // Database exists but not yet initialised/updated - go go gadget setup script
+        header('Location: setup/setup.php');
+        die();
+    }
+
 
     // get some parameters from URL (for convenience)
     if (isset($_REQUEST['page'])) {
