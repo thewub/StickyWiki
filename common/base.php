@@ -19,7 +19,8 @@
         $dsn = "mysql:host=".DB_HOST.";dbname=".DB_NAME;
         $db = new PDO($dsn, DB_USER, DB_PASS);
     } catch (PDOException $e) {
-        echo 'Connection failed: ' . $e->getMessage();
+        // database connection failed - go go gadget setup script
+        header('Location: setup/setup.php');
         exit;
     }
 
