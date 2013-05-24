@@ -1,0 +1,51 @@
+== StickyWiki ==
+
+StickyWiki is a basic wiki software. This project began as a personal attempt to learn PHP and MySQL. It works, but isn't ready for production use.
+
+Good Things:
+* [[http://www.wikicreole.org/|WikiCreole]] markup
+* Responsive layout using [[http://twitter.github.io/bootstrap/|Bootstrap]]
+* HTML5, web standards and all that
+* Clutter-free and simple
+
+Less Good Things:
+* No caching - not ideal for very large or high traffic sites
+* I've tried my best, but I'm fairly new to web programming so can't guarantee security.
+** Notably there is a risk of [[https://en.wikipedia.org/wiki/Cross-site_request_forgery|cross-site request forgery]]. I intend to fix this soon.
+
+=== Setup ===
+* Create a database, and a user with all access rights on that database
+* Place the details of the above into /config.php
+* Run /setup/setup.php from a web browser
+* You should be good to go!
+
+=== Licenses ===
+==== Parser ====
+* The [[https://gitorious.org/w/|Creole markup parser]] is by Ivan Fomichev / Codeholic, and is licensed under the [[http://opensource.org/licenses/mit-license.php|MIT/X11 license]].
+
+==== Bootstrap ====
+* [[http://twitter.github.io/bootstrap/|Bootstrap]] is by Twitter, and is licensed under [[https://www.apache.org/licenses/LICENSE-2.0|Apache License v2.0]].
+* [[http://glyphicons.com/|Glyphicons Free]] licensed under [[http://creativecommons.org/licenses/by/3.0/|CC-BY-3.0]].
+
+==== Everything else ====
+The MIT License (MIT)
+
+Copyright (c) 2013 Peter Coombe
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
