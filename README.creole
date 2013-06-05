@@ -27,6 +27,9 @@ Less Good Things:
 * [[http://twitter.github.io/bootstrap/|Bootstrap]] is by Twitter, and is licensed under [[https://www.apache.org/licenses/LICENSE-2.0|Apache License v2.0]].
 * [[http://glyphicons.com/|Glyphicons Free]] licensed under [[http://creativecommons.org/licenses/by/3.0/|CC-BY-3.0]].
 
+==== phpass ====
+* [[http://www.openwall.com/phpass/|phpass]] (PasswordHash.php) is in the public domain.
+
 ==== Everything else ====
 The MIT License (MIT)
 
