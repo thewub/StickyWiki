@@ -5,7 +5,7 @@
      */
 
     // bump this every time there is a change to the database schema
-    $latestdbversion = 1;
+    $latestdbversion = 2;
 
     // Set the error reporting level
     error_reporting(E_ALL);

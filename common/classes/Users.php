@@ -51,12 +51,16 @@ class Users {
             return '<p class="text-error"> Sorry, that username is already taken. Please try another. </p>';
         }
 
+        require_once('common/PasswordHash.php');
+        $pwdHasher = new PasswordHash(8, FALSE);
+        $hash = $pwdHasher->HashPassword($p);
+        
         // add user to the database
         $sql = "INSERT INTO user (user_name, user_password, user_timestamp)
-                VALUES (:u, SHA1(:p), NOW())";
+                VALUES (:u, :hash, NOW())";
         $stmt = $this->_db->prepare($sql);
         $stmt->bindParam(":u", $u, PDO::PARAM_STR);
-        $stmt->bindParam(":p", $p, PDO::PARAM_STR);
+        $stmt->bindParam(":hash", $hash, PDO::PARAM_STR);
         $stmt->execute();
         $stmt->closeCursor();
 
@@ -76,23 +80,34 @@ class Users {
      * @return boolean    TRUE on success and FALSE on failure
      */
     public function accountLogin($u, $p) {
-        $sql = "SELECT user_name, user_id
+        try {
+            $sql = "SELECT user_name, user_id, user_password
                 FROM user
                 WHERE user_name=:user
-                AND user_password=SHA1(:pass)
                 LIMIT 1";
-        try {
             $stmt = $this->_db->prepare($sql);
             $stmt->bindParam(':user', $u, PDO::PARAM_STR);
-            $stmt->bindParam(':pass', $p, PDO::PARAM_STR);
             $stmt->execute();
+
             if($stmt->rowCount()==1) {
                 $result = $stmt->fetch();
-                $_SESSION['Username'] = $result['user_name'];
-                $_SESSION['UserID'] = $result['user_id'];
-                $_SESSION['LoggedIn'] = 1;
-                return TRUE;
+
+                require_once('common/PasswordHash.php');
+                $pwdHasher = new PasswordHash(8, FALSE);
+                $correctPassword = $pwdHasher->CheckPassword($p, $result['user_password']);
+
+                if ($correctPassword) {
+                    $_SESSION['Username'] = $result['user_name'];
+                    $_SESSION['UserID'] = $result['user_id'];
+                    $_SESSION['LoggedIn'] = 1;
+                    return TRUE;
+                } else {
+                    // wrong password
+                    return FALSE;
+                }
+
             } else {
+                // user does not exist
                 return FALSE;
             }
         } catch(PDOException $e) {
@@ -221,6 +236,9 @@ class Users {
     }
 
     function changePassword($username, $currentpassword, $newpassword) {
+
+        // NEEDS REWRITE TO USE PASSWORDHASH
+
         if ( $this->accountLogin($username, $currentpassword) ) {
             $sql = "UPDATE user
                     SET user_password = SHA1( :newpass )

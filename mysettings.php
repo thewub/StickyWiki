@@ -6,6 +6,8 @@
     if (!isset($_SESSION['LoggedIn'])) {
         terminalError('Need to be logged in first!');
     }
+
+    terminalError('Disabled until changePassword function updated');
 ?>
 
 <div class="page-header">

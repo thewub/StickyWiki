@@ -89,4 +89,4 @@ CREATE TABLE `siteinfo` (
 );
 INSERT INTO `siteinfo`
 (`db_version`)
-VALUES (1);
+VALUES (2);
