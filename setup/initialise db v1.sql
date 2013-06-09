@@ -61,7 +61,7 @@ VALUES (1, 'new page');
 
 INSERT INTO `user`
 (`user_id`, `user_name`, `user_password`, `user_timestamp`)
-VALUES (1, 'StickyWiki default', 'c5370463804936dde7322cc0e539077e44a1c163', NOW());
+VALUES (1, 'StickyWiki default', '', NOW());
 
 INSERT INTO `user_groups`
 (`ug_user`, `ug_group`)
