@@ -72,7 +72,6 @@
                 die();
             }
             $users->createAdminAccount($u, $p);
-            // TODO: have user logged in when return to site
             echo '<meta http-equiv="refresh" content="0;../view.php?page=Home">';
             exit;
         } else {
