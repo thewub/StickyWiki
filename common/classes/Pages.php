@@ -34,10 +34,10 @@ class Pages {
     /**
      * Gets information about a page and its current revision
      *
-     * @param string $p : pagename
+     * @param string $pagetitle : page title
      * @return array : an array containing rev & page info
      */
-    public function getPageInfo($p) {
+    public function getPageInfo($pagetitle) {
 
         $sql = "SELECT * 
                 FROM rev
@@ -46,7 +46,7 @@ class Pages {
                 WHERE page_title=:p";
 
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(":p", $p, PDO::PARAM_STR);
+        $stmt->bindParam(":p", $pagetitle, PDO::PARAM_STR);
         $stmt->execute();
         $row = $stmt->fetch();
         return $row;
@@ -76,10 +76,10 @@ class Pages {
     /**
      * Gets info about previous revisions to the page
      *
-     * @param string $p : pagename
+     * @param string $pagetitle : page title
      * @return array : an array of revisions, each containing an array of info
      */
-    public function getPageHistory($p) {
+    public function getPageHistory($pagetitle) {
         $sql = "SELECT *
                 FROM rev
                 JOIN page ON (rev_page=page_id)
@@ -88,7 +88,7 @@ class Pages {
                 ORDER BY rev_timestamp DESC";
         
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(":p", $p, PDO::PARAM_STR);
+        $stmt->bindParam(":p", $pagetitle, PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
@@ -97,7 +97,7 @@ class Pages {
     /**
      * Saves new content to a page (creating the page if it doesn't already exist)
      *
-     * @param string $pageid : pageid (empty if page does not yet exist)
+     * @param int $pageid : pageid (empty if page does not yet exist)
      * @param string $pagetitle : page title
      * @param string $newcontent : the new markup to save
      * @param string $comment : the edit comment
@@ -153,6 +153,12 @@ class Pages {
 
     }
 
+    /**
+     * Deletes a page - and all revisions associated with it!
+     *
+     * @param int $pageid : id of the page
+     * @return void
+     */
     public function deletePage($pageid) {
         // delete revisions
         $sql = "DELETE FROM rev WHERE rev_page = :pageid";
@@ -160,12 +166,18 @@ class Pages {
         $stmt->bindParam(":pageid", $pageid, PDO::PARAM_STR);
         $stmt->execute();
 
+        // delete the page
         $sql = "DELETE FROM page WHERE page_id = :pageid";
         $stmt = $this->_db->prepare($sql);
         $stmt->bindParam(":pageid", $pageid, PDO::PARAM_STR);
         $stmt->execute();
     }
 
+    /**
+     * Returns all page titles on the wiki
+     *
+     * @return array : array of page titles
+     */
     public function getPageList() {
         $sql = "SELECT page_title
                 FROM page

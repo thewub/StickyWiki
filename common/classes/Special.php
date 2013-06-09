@@ -29,9 +29,8 @@ class Special {
         }
     }
 
-
     /**
-     * Gets information about the current revision of a page
+     * Gets recent changes for the wiki
      *
      * @param int $limit - number of results to retrieve
      * @return array - an array of recent changes

@@ -119,15 +119,15 @@ class Users {
     /** 
      * Gets information about a user from the database
      *
-     * @param string $u : username
+     * @param string $username : username
      * @return array : info from database
      */
-    public function getUserInfo($u) {
+    public function getUserInfo($username) {
         $sql = "SELECT user_id, user_timestamp
                 FROM user
                 WHERE user_name=:u";
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(':u', $u, PDO::PARAM_STR);
+        $stmt->bindParam(':u', $username, PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetch();
         return $result;
@@ -136,10 +136,10 @@ class Users {
     /** 
      * Gets a user's edits from the database
      *
-     * @param string $u : username
+     * @param string $username : username
      * @return array : rev entries from database
      */
-    public function getUserEdits($u) {
+    public function getUserEdits($username) {
         $sql = "SELECT *
                 FROM rev
                 JOIN page ON (rev_page=page_id)
@@ -147,7 +147,7 @@ class Users {
                 WHERE user_name=:u
                 ORDER BY rev_timestamp DESC";       
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(':u', $u, PDO::PARAM_STR);
+        $stmt->bindParam(':u', $username, PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
@@ -156,15 +156,15 @@ class Users {
     /**
      * Gets user's groups
      *
-     * @param int $uid : user id
+     * @param int $userid : user id
      * @return array : array of user groups
      **/
-    function getUserGroups($uid) {
+    function getUserGroups($userid) {
         $sql = "SELECT ug_group
                 FROM user_groups
-                WHERE ug_user=:uid";
+                WHERE ug_user=:userid";
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(':uid', $uid, PDO::PARAM_STR);
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
         return $result;
@@ -173,15 +173,15 @@ class Users {
     /**
      * Add a user to a group
      *
-     * @param int $uid : user id
+     * @param int $userid : user id
      * @param string $group : group to add
      * @return void
      **/
-    function addUserGroup($uid, $group) {
+    function addUserGroup($userid, $group) {
         $sql = "INSERT INTO user_groups (ug_user, ug_group)
-                VALUES (:uid, :group)";
+                VALUES (:userid, :group)";
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(':uid', $uid, PDO::PARAM_STR);
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
         $stmt->bindParam(':group', $group, PDO::PARAM_STR);
         $stmt->execute();
         $stmt->closeCursor();
@@ -190,16 +190,16 @@ class Users {
     /**
      * Remove a user from a group
      *
-     * @param int $uid : user id
+     * @param int $userid : user id
      * @param string $group : group to remove
      * @return void
      **/
-    function removeUserGroup($uid, $group) {
+    function removeUserGroup($userid, $group) {
         $sql = "DELETE FROM user_groups 
-                WHERE ug_user=:uid
+                WHERE ug_user=:userid
                 AND ug_group=:group";
         $stmt = $this->_db->prepare($sql);
-        $stmt->bindParam(':uid', $uid, PDO::PARAM_STR);
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
         $stmt->bindParam(':group', $group, PDO::PARAM_STR);
         $stmt->execute();
         $stmt->closeCursor();
@@ -225,6 +225,11 @@ class Users {
         return $output;
     }
 
+    /**
+     * Returns all users on the wiki
+     *
+     * @return array : array of info from the database
+     */
     function getAllUsers() {
         $sql = "SELECT user_name, user_id, user_timestamp
                 FROM user
@@ -235,6 +240,14 @@ class Users {
         return $result;
     }
 
+    /**
+     * Change a user's password
+     *
+     * @param string $username
+     * @param string $currentpassword
+     * @param string $newpassword
+     * @return string : status message
+     */
     function changePassword($username, $currentpassword, $newpassword) {
 
         // NEEDS REWRITE TO USE PASSWORDHASH
@@ -254,8 +267,7 @@ class Users {
     }
 
     /**
-     * Is there an admin in the house? (i.e. on the wiki).
-     * Used during setup to prevent extra admins being created
+     * Is there an admin on the wiki? Used during setup to prevent extra admins being created
      *
      * @return boolean
      */
@@ -270,14 +282,14 @@ class Users {
     /**
      * Create an admin account (for example when the wiki is first set up)
      *
-     * @param string $u : username
-     * @param string $p : password
+     * @param string $username : username
+     * @param string $password : password
      * @return void
      */
-    function createAdminAccount($u, $p) {
-        $this->createAccount($u, $p);
-        $uid = $this->getUserInfo($u)['user_id'];
-        $this->addUserGroup($uid, 'admin');
+    function createAdminAccount($username, $password) {
+        $this->createAccount($username, $password);
+        $userid = $this->getUserInfo($username)['user_id'];
+        $this->addUserGroup($userid, 'admin');
     }
 
 
