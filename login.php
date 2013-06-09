@@ -27,14 +27,14 @@ elseif (!empty($_POST['username'])):
 else: ?>
 
     <!-- no username posted, so show the form -->
-    <form method="post" action="login.php" name="loginform" id="loginform">
+    <form method="post" action="login.php" name="loginform" id="loginform">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" autofocus="true" />
         <label for="password">Password</label>
         <input type="password" name="password" id="password" />
-        <br />
-        <button class="btn btn-primary" type="submit" name="login">Log in</button>
-    </form>
+        <br />
+        <button class="btn btn-primary" type="submit" name="login">Log in</button>
+    </form>
 
 <?php
     endif;
