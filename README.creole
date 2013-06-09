@@ -20,6 +20,9 @@ Less Good Things:
 * You should be good to go!
 
 === Licenses ===
+==== jQuery ====
+* [[http://jquery.com/|jQuery]] is under the [[https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt|MIT license]].
+
 ==== Parser ====
 * The [[https://gitorious.org/w/|Creole markup parser]] is by Ivan Fomichev / Codeholic, and is licensed under the [[http://opensource.org/licenses/mit-license.php|MIT/X11 license]].
 

@@ -17,7 +17,7 @@ if(!empty($title)) {
         <!-- custom css -->
         <link href="main.css" rel="stylesheet">
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="jquery-1.10.1.min.js"></script>
     </head>
 
     <body>
