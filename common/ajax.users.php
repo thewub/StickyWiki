@@ -2,8 +2,8 @@
 
 session_start();
 
-include_once 'constants.php';
-include_once 'class.Users.php';
+include_once 'config.php';
+include_once 'common/classes/Users.php';
 
 if(!empty($_POST['action'])) {
 	$users = new Users();
