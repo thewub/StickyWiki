@@ -4,6 +4,8 @@
      * Setup database
      */
 
+    set_include_path('..');
+
     // bump this every time there is a change to the database schema
     $latestdbversion = 2;
 
@@ -15,7 +17,7 @@
     session_start();
  
     // Include site constants
-    include_once '../config.php';
+    include_once 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +65,7 @@
         if ($_POST['password']==$_POST['password2']) {
             $u = $_POST['username'];
             $p = $_POST['password'];
-            include_once '../common/classes/Users.php';
+            include_once 'common/classes/Users.php';
             $users = new Users();
             if ( $users->adminExists() ) {
                 echo 'An admin account already exists!';

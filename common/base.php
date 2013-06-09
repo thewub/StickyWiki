@@ -3,6 +3,8 @@
      * Starts a session, and creates a database connection using PDO (PHP Data Objects)
      */
 
+    set_include_path('..');
+
     // bump this every time there is a change to the database schema
     $latestdbversion = 2;
 
@@ -36,7 +38,6 @@
         header('Location: setup/setup.php');
         die();
     }
-
 
     // get some parameters from URL (for convenience)
     if (isset($_REQUEST['page'])) {

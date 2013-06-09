@@ -92,7 +92,7 @@ class Users {
             if($stmt->rowCount()==1) {
                 $result = $stmt->fetch();
 
-                require_once('common/PasswordHash.php');
+                require_once("common/PasswordHash.php");
                 $pwdHasher = new PasswordHash(8, FALSE);
                 $correctPassword = $pwdHasher->CheckPassword($p, $result['user_password']);
 
