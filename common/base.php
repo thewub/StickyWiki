@@ -6,7 +6,7 @@
     set_include_path('..');
 
     // bump this every time there is a change to the database schema
-    $latestdbversion = 2;
+    $latestdbversion = 3;
 
     // Set the error reporting level
     error_reporting(E_ALL);

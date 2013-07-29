@@ -1,5 +1,4 @@
-<?php
- 
+<?php 
 /**
  * Class to deal with pages e.g. viewing, editing
  *
@@ -8,7 +7,7 @@
  */
 class Pages {
 
-	/**
+    /**
      * The database object
      *
      * @var object
@@ -30,7 +29,6 @@ class Pages {
         }
     }
 
-
     /**
      * Gets information about a page and its current revision
      *
@@ -50,6 +48,24 @@ class Pages {
         $stmt->execute();
         $row = $stmt->fetch();
         return $row;
+    }
+
+    /**
+     * Log a page view in the database
+     *
+     * @param int $pageid
+     * @return void
+     */
+    public function logPageView($pageid) {
+
+        $sql = "UPDATE page
+                SET page_views = page_views + 1
+                WHERE page_id=:pageid";
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(":pageid", $pageid, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();        
+
     }
 
     /**
@@ -107,8 +123,8 @@ class Pages {
         if (empty($pageid)) {
             // page doesn't exist yet - need to insert it
             $newpage = true;
-            $sql = "INSERT INTO page (page_title, page_current_rev)
-                    VALUES (:pagetitle, 0)";
+            $sql = "INSERT INTO page (page_title, page_current_rev, page_views)
+                    VALUES (:pagetitle, 0, 1)";
             $stmt = $this->_db->prepare($sql);
             $stmt->bindParam(":pagetitle", $pagetitle, PDO::PARAM_STR);
             $stmt->execute();

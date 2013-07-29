@@ -1,5 +1,4 @@
 <?php
- 
 /**
  * Class to deal with users e.g. logging in, getting contributions
  *

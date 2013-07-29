@@ -7,6 +7,7 @@ CREATE TABLE `page` (
   `page_id` int(11) NOT NULL AUTO_INCREMENT,
   `page_title` varchar(255) NOT NULL,
   `page_current_rev` int(11) NOT NULL,
+  `page_views` int(11) NOT NULL,
   PRIMARY KEY (`page_id`),
   KEY `page_current_rev` (`page_current_rev`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
@@ -89,4 +90,4 @@ CREATE TABLE `siteinfo` (
 );
 INSERT INTO `siteinfo`
 (`db_version`)
-VALUES (2);
+VALUES (3);

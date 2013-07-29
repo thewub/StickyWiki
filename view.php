@@ -11,6 +11,7 @@
     $pages = new Pages($db);
 
     $revinfo = $pages->getPageInfo($page);
+    $pages->logPageView($revinfo['page_id']);
 ?>
 
 <div class="page-header">
@@ -37,6 +38,7 @@
         echo parse($revinfo['rev_content']);
         echo '<div class="page-footer muted">';
         echo 'Last edited ' . formatTimestamp($revinfo['rev_timestamp']) . ' by ' . $revinfo['user_name'];
+        echo '<br/>This page has been viewed ' . $revinfo['page_views'] .  ' times';
         echo '</div>';
     } else {
         // page doesn't exist
