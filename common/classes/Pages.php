@@ -195,7 +195,7 @@ class Pages {
      * @return array : array of page titles
      */
     public function getPageList() {
-        $sql = "SELECT page_title
+        $sql = "SELECT *
                 FROM page
                 ORDER BY page_title";
         $stmt = $this->_db->prepare($sql);

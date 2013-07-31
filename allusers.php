@@ -36,14 +36,7 @@
             }
         ?>
 
-
     </tbody>
 </table>
-
-
-
-<ul>
-
-</ul>
 
 <?php include_once 'common/footer.php'; ?>

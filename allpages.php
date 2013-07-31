@@ -12,12 +12,27 @@
     <h1>All pages</h1>
 </div>
 
-<ul>
-	<?php
-		foreach ($allpages as $i) {
-        	echo sprintf('<li><a href="view.php?page=%1$s">%1$s</a></li>', $i['page_title']);
-    	}
-    ?>
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Page</th>
+            <th>Views</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <?php
+            foreach ($allpages as $i) {
+                echo '<tr>';
+                echo sprintf('<td><a href="view.php?page=%1$s">%1$s</a></td>', $i['page_title']);
+                echo '<td>' . $i['page_views'] . '</td>';
+                echo '</tr>';
+            }
+        ?>
+
+    </tbody>
+
+</table>
 
 <?php include_once 'common/footer.php'; ?>
