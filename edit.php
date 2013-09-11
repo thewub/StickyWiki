@@ -45,12 +45,12 @@
 
 <form method="post" action="edit.php?page=<?php echo $page; ?>" name="editform" id="editform">
     <textarea id="edit-area" name="edit-area" rows="10" autofocus="true" spellcheck="true"><?php echo $newcontent; ?></textarea>
-    <label for="edit-comment-input">Comment</label>
-    <input id="edit-comment-input" name="edit-comment" type="text" placeholder="Summarise your changes here" value="<?php echo $comment; ?>" />
+    <!--<label for="edit-comment-input">Comment</label>-->
+    <input id="edit-comment-input" name="edit-comment" type="text" placeholder="summarise your changes here" value="<?php echo $comment; ?>" />
     <div class="edit-buttons">
-        <button class="btn btn-primary" name="save" type="submit"><i class="icon-ok icon-white"></i> Save</button>
-        <button class="btn" name="preview" type="submit"><i class="icon-search"></i> Preview</button>
-        <a class="btn btn-danger" href="view.php?page=<?php echo $page; ?>"><i class="icon-remove icon-white"></i> Cancel</a>
+        <button class="btn btn-primary" name="save" type="submit"><i class="icon-ok icon-white"></i> save</button>
+        <button class="btn" name="preview" type="submit"><i class="icon-search"></i> preview</button>
+        <a class="btn btn-danger" href="view.php?page=<?php echo $page; ?>"><i class="icon-remove icon-white"></i> cancel</a>
     </div>
 </form>
 
