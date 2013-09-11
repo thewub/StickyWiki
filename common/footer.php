@@ -1,7 +1,6 @@
     </div><!-- end of container -->
 
     <div id="footer">
-        <hr/>
 <?php if(isset($_SESSION['LoggedIn']) && $_SESSION['LoggedIn']==1): ?>
             Logged in as <strong><a href="user.php?user=<?php echo $_SESSION['Username']; ?>"><?php echo $_SESSION['Username']; ?></a></strong> 
             <?php echo $users->formatGroups($mygroups); ?><br />
