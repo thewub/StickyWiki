@@ -33,13 +33,13 @@ if(!empty($title)) {
                     <div class="nav-collapse collapse">
 
                         <form method="get" action="view.php" class="navbar-form pull-right">
-                            <input type="text" name="page" placeholder="Search" class="span4">
+                            <input type="text" name="page" placeholder="search" class="span4">
                         </form>
 
                         <ul class="nav">
-                            <li><a href="recentchanges.php">Recent changes</a></li>
-                            <li><a href="allpages.php">All pages</a></li>
-                            <li><a href="allusers.php">All users</a></li>
+                            <li><a href="recentchanges.php">recent changes</a></li>
+                            <li><a href="allpages.php">all pages</a></li>
+                            <li><a href="allusers.php">all users</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

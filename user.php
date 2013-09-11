@@ -23,15 +23,15 @@
             // leet admin tools
 
             if (in_array('blocked', $usergroups)) {
-                echo '<button type="submit" id="action-unblock" class="btn btn-danger"> Unblock user</button>';
+                echo '<button type="submit" id="action-unblock" class="btn btn-danger"> unblock user</button>';
             } else {
-                echo '<button type="submit" id="action-block" class="btn btn-danger"><i class="icon-ban-circle icon-white"></i> Block user</button>';
+                echo '<button type="submit" id="action-block" class="btn btn-danger"><i class="icon-ban-circle icon-white"></i> block user</button>';
             }
 
             if (in_array('admin', $usergroups)) {
-                echo ' <button type="submit" id="action-demote" class="btn btn-success"><i class="icon-remove icon-white"></i> De-admin</button>';
+                echo ' <button type="submit" id="action-demote" class="btn btn-success"><i class="icon-remove icon-white"></i> de-admin</button>';
             } else {
-                echo ' <button type="submit" id="action-promote" class="btn btn-success"><i class="icon-star icon-white"></i> Make admin</button>';
+                echo ' <button type="submit" id="action-promote" class="btn btn-success"><i class="icon-star icon-white"></i> make admin</button>';
             }
         }
         ?>
