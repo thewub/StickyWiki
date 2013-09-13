@@ -249,15 +249,17 @@ class Users {
      */
     function changePassword($username, $currentpassword, $newpassword) {
 
-        // NEEDS REWRITE TO USE PASSWORDHASH
-
         if ( $this->accountLogin($username, $currentpassword) ) {
+            require_once('common/PasswordHash.php');
+            $pwdHasher = new PasswordHash(8, FALSE);
+            $newHash = $pwdHasher->HashPassword($newpassword);
+
             $sql = "UPDATE user
-                    SET user_password = SHA1( :newpass )
+                    SET user_password = :newHash
                     WHERE user_name = :username;";
             $stmt = $this->_db->prepare($sql);
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-            $stmt->bindParam(':newpass', $newpassword, PDO::PARAM_STR);
+            $stmt->bindParam(':newHash', $newHash, PDO::PARAM_STR);
             $stmt->execute();
             return 'Password successfully changed.';
         } else {
