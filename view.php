@@ -17,13 +17,13 @@
 <div class="page-header">
     <div class="page-tools">
         <?php if (!empty($revinfo['page_id'])): ?>
-            <a href="edit.php?page=<?php echo $page; ?>" class="btn btn-primary"><i class="icon-pencil icon-white"></i> edit page</a>
-            <a href="history.php?page=<?php echo $page; ?>" class="btn"><i class="icon-th-list"></i> history</a>
+            <a href="edit.php?page=<?php echo $page; ?>"><i class="icon-pencil "></i> edit page</a>
+            <a href="history.php?page=<?php echo $page; ?>"><i class="icon-th-list"></i> history</a>
             <?php if (in_array('admin', $mygroups)): ?>
-                <button id="action-delete" class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
+                <button id="action-delete" class="btn btn-danger"><i class="icon-trash "></i></button>
             <?php endif; ?>
         <?php else: ?>
-            <a href="edit.php?page=<?php echo $page; ?>" class="btn btn-success"><i class="icon-plus icon-white"></i> create page</a>
+            <a href="edit.php?page=<?php echo $page; ?>" class="btn btn-success"><i class="icon-plus "></i> create page</a>
         <?php endif; ?>
     </div>
     <h1><?php echo $page; ?></h1>

@@ -16,7 +16,7 @@
 
 <div class="page-header">
     <div class="page-tools">
-        <a href="view.php?page=<?php echo $revinfo['page_title']; ?>" class="btn"><i class="icon-arrow-up"></i> View current revision</a>
+        <a href="view.php?page=<?php echo $revinfo['page_title']; ?>"><i class="icon-arrow-up"></i> View current revision</a>
     </div>
     <h1><?php echo $revinfo['page_title']; ?> <small>as of <?php echo formatTimestamp($revinfo['rev_timestamp']); ?></small></h1>
 </div>
