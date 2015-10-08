@@ -1,3 +1,5 @@
+== This project is pretty much abandoned ==
+
 == StickyWiki ==
 
 StickyWiki is a basic wiki software. This project began as a personal attempt to learn PHP and MySQL. It works, but isn't ready for production use.
